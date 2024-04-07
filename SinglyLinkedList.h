@@ -58,6 +58,13 @@ public:
         size++;
     };
 
+    void popFront() {
+        if (head == nullptr)return;
+        //Node* newNode = head.get();
+        head = std::move(head->next);
+        size--;
+    }
+
     void popBack() {
         if (head == nullptr) return;
         if (head->next == nullptr) {

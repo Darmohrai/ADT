@@ -11,12 +11,12 @@ int main() {
     obj.pushBack(6);
     obj.pushFront(1);
     obj.pushBack(8);
-    obj.pushFront(2);
+    obj.show();
     //obj.show();
 
     //Show (std::move(obj));
 
-    obj.popBack();
+    obj.popFront();
     obj.show();
     return 0;
 }
