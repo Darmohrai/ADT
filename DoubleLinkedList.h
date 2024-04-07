@@ -39,6 +39,20 @@ public:
         size++;
     }
 
+    void pushBack(T value){
+        std::shared_ptr<Node> newNode = std::make_shared<Node>(value);
+        if (head == nullptr) {
+            head = tail = newNode;
+            head->next = nullptr;
+            size++;
+            return;
+        }
+        newNode->previous = tail;
+        tail->next = newNode;
+        tail = newNode;
+        size++;
+    }
+
     friend std::ostream &operator<<(std::ostream &os, DoubleLinkedList &other){
         Node *current = other.head.get();
         while(current != nullptr){
