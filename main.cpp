@@ -24,5 +24,9 @@ int main() {
     obj.show();
 
     std::cout << "\nindex - " << obj.index(2);
+
+    if(obj.search(9)){
+        std::cout << "\n yes";
+    }
     return 0;
 }

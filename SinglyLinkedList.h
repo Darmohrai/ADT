@@ -142,7 +142,16 @@ public:
 
     [[nodiscard]]size_t showSize() { return size; }
 
-    [[nodiscard]] bool isListEmpty() { if (size > 0) return true; }
+    [[nodiscard]] bool isListNotEmpty() { if (size > 0) return true; }
+
+    [[nodiscard]] bool search(T date){
+        Node* current = head.get();
+        while(current){
+            if(current->date == date) return true;
+            current = current->next.get();
+        }
+        return false;
+    }
 
     ~SinglyLinkedList() =
     default;
