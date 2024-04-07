@@ -24,6 +24,12 @@ private:
 public:
     SinglyLinkedList() : head{nullptr}, size{0} {};
 
+    SinglyLinkedList(SinglyLinkedList&& other) {
+        head = std::move(other.head);
+        size = other.size;
+        other.size = 0;
+    }
+
     void pushBack(T value) {
         if (head == nullptr) {
             head = std::make_unique<Node>(value);
@@ -37,6 +43,7 @@ public:
         current->next = std::make_unique<Node>(value);
         size++;
     };
+
 
     void show() {
         if (head == nullptr) {
