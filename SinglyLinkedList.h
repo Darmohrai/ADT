@@ -142,15 +142,30 @@ public:
 
     [[nodiscard]]size_t showSize() { return size; }
 
-    [[nodiscard]] bool isListNotEmpty() { if (size > 0) return true; }
+    [[nodiscard]] bool isListNotEmpty() {
+        if (size > 0) return true;
+        else return false;
+    }
 
-    [[nodiscard]] bool search(T date){
-        Node* current = head.get();
-        while(current){
-            if(current->date == date) return true;
+    [[nodiscard]] bool search(T date) {
+        Node *current = head.get();
+        while (current) {
+            if (current->date == date) return true;
             current = current->next.get();
         }
         return false;
+    }
+
+    friend std::ostream &operator<<(std::ostream &os, SinglyLinkedList &other) {
+        if (other.isListNotEmpty()) {
+            Node *current = other.head.get();
+            while (current != nullptr) {
+                os << current->date << " ";
+                current = current->next.get();
+            }
+        }
+        os << std::endl;
+        return os;
     }
 
     ~SinglyLinkedList() =

@@ -21,7 +21,7 @@ int main() {
 
     std::cout << std::endl;
 
-    obj.show();
+    std::cout << obj;
 
     std::cout << "\nindex - " << obj.index(2);
 
