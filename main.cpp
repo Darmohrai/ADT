@@ -1,7 +1,7 @@
 #include <iostream>
 #include "SinglyLinkedList.h"
 
-void Show(SinglyLinkedList<int>obj){
+void Show(SinglyLinkedList<int> obj) {
     obj.show();
 }
 
@@ -17,6 +17,12 @@ int main() {
 
     //Show (std::move(obj));
 
-    std::cout << "\nindex - " << obj.index(8);
+    obj.insertAtIndex(0, 9);
+
+    std::cout << std::endl;
+
+    obj.show();
+
+    std::cout << "\nindex - " << obj.index(0);
     return 0;
 }

@@ -93,6 +93,25 @@ public:
         return current->date;
     };
 
+    void insertAtIndex(int index, T value) {
+        checkIndex(index);
+        Node *current = head.get();
+        if (index == 0) {
+            std::unique_ptr<Node> newNode = std::make_unique<Node>(value);
+            newNode->next = std::move(head);
+            head = std::move(newNode);
+            size++;
+        } else {
+            for (int i = 0; i < index - 1; i++) {
+                current = current->next.get();
+            }
+            std::unique_ptr<Node> newNode = std::make_unique<Node>(value);
+            newNode->next = std::move(current->next);
+            current->next = std::move(newNode);
+            size++;
+        }
+    }
+
     void show() {
         if (head == nullptr) {
             std::cout << "List is empty";
