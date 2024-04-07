@@ -140,6 +140,10 @@ public:
         std::cout << "size - " << size;
     };
 
+    [[nodiscard]]size_t showSize() { return size; }
+
+    [[nodiscard]] bool isListEmpty() { if (size > 0) return true; }
+
     ~SinglyLinkedList() =
     default;
 };

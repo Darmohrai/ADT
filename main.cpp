@@ -23,6 +23,6 @@ int main() {
 
     obj.show();
 
-    std::cout << "\nindex - " << obj.index(7);
+    std::cout << "\nindex - " << obj.index(2);
     return 0;
 }
