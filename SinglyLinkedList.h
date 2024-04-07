@@ -16,7 +16,8 @@ private:
         std::unique_ptr<Node> next;
 
         Node(T value) : date{value}, next{nullptr} {};
-        Node(T value, Node* ptr) : date{value} { next = std::make_unique<Node>(*ptr);};
+
+        Node(T value, Node *ptr) : date{value} { next = std::make_unique<Node>(*ptr); };
     };
 
     std::unique_ptr<Node> head = nullptr;
@@ -31,7 +32,7 @@ public:
         other.size = 0;
     }
 
-    void pushFront(T value){
+    void pushFront(T value) {
         if (head == nullptr) {
             head = std::make_unique<Node>(value);
             size++;
@@ -56,6 +57,21 @@ public:
         current->next = std::make_unique<Node>(value);
         size++;
     };
+
+    void popBack() {
+        if (head == nullptr) return;
+        if (head->next == nullptr) {
+            head = nullptr;
+            size--;
+            return;
+        }
+        Node *current = head.get();
+        while (current->next->next != nullptr) {
+            current = current->next.get();
+        }
+        current->next = nullptr;
+        size--;
+    }
 
     void show() {
         if (head == nullptr) {
