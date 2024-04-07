@@ -17,12 +17,12 @@ int main() {
 
     //Show (std::move(obj));
 
-    obj.insertAtIndex(0, 9);
+    obj.removeAtIndex(2);
 
     std::cout << std::endl;
 
     obj.show();
 
-    std::cout << "\nindex - " << obj.index(0);
+    std::cout << "\nindex - " << obj.index(7);
     return 0;
 }

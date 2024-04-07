@@ -112,6 +112,21 @@ public:
         }
     }
 
+    void removeAtIndex(int index) {
+        checkIndex(index);
+        if (index == 0) {
+            head = std::move(head->next);
+            size--;
+        } else {
+            Node *current = head.get();
+            for (int i = 0; i < index - 1; i++) {
+                current = current->next.get();
+            }
+            current->next = std::move(current->next->next);
+            size--;
+        }
+    }
+
     void show() {
         if (head == nullptr) {
             std::cout << "List is empty";
