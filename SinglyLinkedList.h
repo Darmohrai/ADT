@@ -32,6 +32,10 @@ public:
         other.size = 0;
     }
 
+    void checkIndex(int index) const {
+        if (index < 0 or index >= size) throw std::out_of_range("Index out of range");
+    }
+
     void pushFront(T value) {
         if (head == nullptr) {
             head = std::make_unique<Node>(value);
@@ -80,6 +84,15 @@ public:
         size--;
     }
 
+    T index(int index) {
+        checkIndex(index);
+        Node *current = head.get();
+        for (int i = 0; i < index; i++) {
+            current = current->next.get();
+        }
+        return current->date;
+    };
+
     void show() {
         if (head == nullptr) {
             std::cout << "List is empty";
@@ -93,7 +106,8 @@ public:
         std::cout << "size - " << size;
     };
 
-    ~SinglyLinkedList() = default;
+    ~SinglyLinkedList() =
+    default;
 };
 
 

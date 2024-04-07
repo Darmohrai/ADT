@@ -6,6 +6,7 @@ void Show(SinglyLinkedList<int>obj){
 }
 
 int main() {
+    // code verification
     SinglyLinkedList<int> obj;
     obj.pushBack(7);
     obj.pushBack(6);
@@ -16,7 +17,6 @@ int main() {
 
     //Show (std::move(obj));
 
-    obj.popFront();
-    obj.show();
+    std::cout << "\nindex - " << obj.index(8);
     return 0;
 }
