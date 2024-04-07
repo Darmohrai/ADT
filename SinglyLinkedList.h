@@ -16,6 +16,7 @@ private:
         std::unique_ptr<Node> next;
 
         Node(T value) : date{value}, next{nullptr} {};
+        Node(T value, Node* ptr) : date{value} { next = std::make_unique<Node>(*ptr);};
     };
 
     std::unique_ptr<Node> head = nullptr;
@@ -24,11 +25,23 @@ private:
 public:
     SinglyLinkedList() : head{nullptr}, size{0} {};
 
-    SinglyLinkedList(SinglyLinkedList&& other) {
+    SinglyLinkedList(SinglyLinkedList &&other) {
         head = std::move(other.head);
         size = other.size;
         other.size = 0;
     }
+
+    void pushFront(T value){
+        if (head == nullptr) {
+            head = std::make_unique<Node>(value);
+            size++;
+            return;
+        }
+        std::unique_ptr<Node> newNode = std::make_unique<Node>(value);
+        newNode->next = std::move(head);
+        head = std::move(newNode);
+        size++;
+    };
 
     void pushBack(T value) {
         if (head == nullptr) {
@@ -43,7 +56,6 @@ public:
         current->next = std::make_unique<Node>(value);
         size++;
     };
-
 
     void show() {
         if (head == nullptr) {
