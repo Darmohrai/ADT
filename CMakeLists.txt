@@ -7,4 +7,5 @@ add_executable(ADT main.cpp
         SinglyLinkedList.h
         DoubleLinkedList.h
         Stack.h
+        Stack_L.h
 )

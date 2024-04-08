@@ -13,6 +13,7 @@ class Stack {
 private:
     T stack[MAX_SIZE] = {};
     int top = -1;
+
 public:
     void push(T value) {
         top++;
@@ -23,13 +24,13 @@ public:
 
     T &peek() { return stack[top]; }
 
-    bool isEmpty(){
-        if(top > -1) return true;
+    bool isEmpty() {
+        if (top == -1) return true;
         return false;
     }
 
-    bool isFull(){
-        if(top == MAX_SIZE-1) return true;
+    bool isFull() {
+        if (top == MAX_SIZE - 1) return true;
         return false;
     }
 };

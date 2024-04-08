@@ -1,6 +1,8 @@
 #include <iostream>
 #include "SinglyLinkedList.h"
 #include "DoubleLinkedList.h"
+#include "Stack.h"
+#include "Stack_L.h"
 
 class Check {
 private:
@@ -29,6 +31,31 @@ int main() {
     first_list.removeAtIndex(0);
     std::cout << first_list;
     return 0;*/
+
+    // code verification
+    /*Stack<3, int> first_stack;
+    first_stack.push(1);
+    first_stack.push(2);
+    first_stack.push(3);
+    if (first_stack.isFull()) {
+        for (int i = 0; i < 3; i++) {
+            std::cout << first_stack.peek() << " ";
+            first_stack.pop();
+        }
+    }
+    if (first_stack.isEmpty()) std::cout << "\nyes";*/
+
+    // code verification
+    /*
+    Stack_L<int> first_stack_l;
+    first_stack_l.push(1);
+    first_stack_l.push(2);
+    first_stack_l.push(3);
+    for (int i = 0; i < 3; i++) {
+        std::cout << first_stack_l.peek() << " ";
+        first_stack_l.pop();
+    }
+    if (first_stack_l.isEmpty()) std::cout << "\nyes";*/
 
     
 }
