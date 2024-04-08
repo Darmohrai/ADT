@@ -21,7 +21,17 @@ public:
 
     void pop() { top--; }
 
-    
+    T &peek() { return stack[top]; }
+
+    bool isEmpty(){
+        if(top > -1) return true;
+        return false;
+    }
+
+    bool isFull(){
+        if(top == MAX_SIZE-1) return true;
+        return false;
+    }
 };
 
 #endif //ADT_STACK_H
