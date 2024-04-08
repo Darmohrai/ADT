@@ -3,6 +3,7 @@
 #include "DoubleLinkedList.h"
 #include "Stack.h"
 #include "Stack_L.h"
+#include "Queue.h"
 
 class Check {
 private:
@@ -57,5 +58,16 @@ int main() {
     }
     if (first_stack_l.isEmpty()) std::cout << "\nyes";*/
 
-    
+    // code verification Queue
+    /*Queue<int> first_queue;
+    first_queue.Enqueue(1);
+    first_queue.Enqueue(2);
+    first_queue.Enqueue(3);
+    for (int i = 0; i < 3; i++) {
+        std::cout << first_queue.peek() << " ";
+        first_queue.Dequeue();
+    }
+    */
+
+    // code verification Queue
 }

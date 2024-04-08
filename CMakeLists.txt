@@ -8,4 +8,5 @@ add_executable(ADT main.cpp
         DoubleLinkedList.h
         Stack.h
         Stack_L.h
+        Queue.h
 )
