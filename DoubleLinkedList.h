@@ -102,6 +102,7 @@ public:
             tail = std::make_shared<Node>(value);
             head->next = tail;
             tail->previous = head;
+            size++;
             return;
         }
         std::shared_ptr<Node> newNode = std::make_shared<Node>(value);
@@ -109,6 +110,7 @@ public:
             newNode->next = head;
             head->previous = newNode;
             head = newNode;
+            size++;
             return;
         }
         std::shared_ptr<Node> current = head;
@@ -119,6 +121,7 @@ public:
         newNode->previous = current->previous;
         current->previous = newNode;
         newNode->previous.lock()->next = newNode;
+        size++;
     }
 
     void removeAtIndex(int index) {
@@ -126,11 +129,13 @@ public:
         if (head == tail) return;
         if (index == 0) {
             head = head->next;
+            size--;
             return;
         }
         if (index == size - 1) {
             tail = tail->previous.lock();
             tail->next = nullptr;
+            size--;
             return;
         }
         std::shared_ptr<Node> current = head;
@@ -138,6 +143,7 @@ public:
             current = current->next;
         }
         current->previous.lock()->next = current->next;
+        size--;
     }
 
     [[nodiscard]] bool search(T value) {
