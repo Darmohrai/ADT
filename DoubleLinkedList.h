@@ -62,6 +62,16 @@ public:
         head = head->next;
     }
 
+    void popBack() {
+        if (head == nullptr)return;
+        if (head == tail) {
+            head = tail = nullptr;
+            return;
+        }
+        tail = tail->previous.lock();
+        tail->next = nullptr;
+    }
+
     [[nodiscard]] bool isListNotEmpty() {
         if (size > 0) return true;
         else return false;

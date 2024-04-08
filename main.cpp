@@ -7,7 +7,9 @@ int main() {
     DoubleLinkedList<int> obj;
     obj.pushBack(9);
     std::cout << obj;
-    obj.popFront();
+    obj.pushBack(10);
+    obj.pushFront(1);
+    obj.popBack();
 
     std::cout << obj;
     return 0;
