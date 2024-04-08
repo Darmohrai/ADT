@@ -25,6 +25,15 @@ private:
 public:
     DoubleLinkedList() = default;
 
+    void checkIndex(int index) const {
+        if (index < 0 or index >= size) throw std::out_of_range("Index out of range");
+    }
+
+    [[nodiscard]] bool isListNotEmpty() {
+        if (size > 0) return true;
+        else return false;
+    }
+
     void pushFront(T value) {
         std::shared_ptr<Node> newNode = std::make_shared<Node>(value);
         if (head == nullptr) {
@@ -57,24 +66,76 @@ public:
         if (head == nullptr) return;
         if (head == tail) {
             head = tail = nullptr;
+            size--;
             return;
         }
         head = head->next;
+        size--;
     }
 
     void popBack() {
         if (head == nullptr)return;
         if (head == tail) {
             head = tail = nullptr;
+            size--;
             return;
         }
         tail = tail->previous.lock();
         tail->next = nullptr;
+        size--;
     }
 
-    [[nodiscard]] bool isListNotEmpty() {
-        if (size > 0) return true;
-        else return false;
+    [[nodiscard]] T index(int index) {
+        checkIndex(index);
+        Node *newNode = head.get();
+        for (int i = 0; i < index; i++) {
+            newNode = newNode->next.get();
+        }
+        return newNode->data;
+    }
+
+    void insertAtIndex(int index, T value) {
+        checkIndex(index);
+        if (head == tail) {
+            tail = std::make_shared<Node>(value);
+            head->next = tail;
+            tail->previous = head;
+            return;
+        }
+        std::shared_ptr<Node> newNode = std::make_shared<Node>(value);
+        if (index == 0) {
+            newNode->next = head;
+            head->previous = newNode;
+            head = newNode;
+            return;
+        }
+        std::shared_ptr<Node> current = head;
+        for (int i = 0; i < index; i++) {
+            current = current->next;
+        }
+        newNode->next = current;
+        newNode->previous = current->previous;
+        current->previous = newNode;
+        newNode->previous.lock()->next = newNode;
+    }
+
+    void removeAtIndex(int index) {
+        checkIndex(index);
+        if (head == tail) return;
+        if (index == 0) {
+            head = head->next;
+            return;
+        }
+        if (index == size - 1) {
+            tail = tail->previous.lock();
+            tail->next = nullptr;
+            return;
+        }
+        std::shared_ptr<Node> current = head;
+        for (int i = 0; i < index; i++) {
+            current = current->next;
+        }
+        current->previous.lock()->next = current->next;
     }
 
     friend std::ostream &operator<<(std::ostream &os, DoubleLinkedList &other) {

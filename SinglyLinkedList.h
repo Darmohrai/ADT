@@ -84,7 +84,7 @@ public:
         size--;
     }
 
-    T index(int index) {
+    [[nodiscard]] T index(int index) {
         checkIndex(index);
         Node *current = head.get();
         for (int i = 0; i < index; i++) {
