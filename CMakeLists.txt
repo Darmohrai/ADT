@@ -9,4 +9,5 @@ add_executable(ADT main.cpp
         Stack.h
         Stack_L.h
         Queue.h
+        PriorityQueue.h
 )

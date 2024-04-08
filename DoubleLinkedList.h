@@ -97,7 +97,10 @@ public:
     }
 
     void insertAtIndex(int index, T value) {
-        checkIndex(index);
+        if (head == nullptr) {
+            tail = std::make_shared<Node>(value);
+            head = tail;
+        }
         if (head == tail) {
             tail = std::make_shared<Node>(value);
             head->next = tail;
@@ -156,6 +159,8 @@ public:
         }
         return false;
     }
+
+    [[nodiscard]] size_t size_list() { return size; }
 
     friend std::ostream &operator<<(std::ostream &os, DoubleLinkedList &other) {
         Node *current = other.head.get();

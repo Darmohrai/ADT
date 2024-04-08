@@ -4,6 +4,7 @@
 #include "Stack.h"
 #include "Stack_L.h"
 #include "Queue.h"
+#include "PriorityQueue.h"
 
 class Check {
 private:
@@ -69,5 +70,21 @@ int main() {
     }
     */
 
-    // code verification Queue
+  /*  DoubleLinkedList<int> l;
+    l.insertAtIndex(0, 1);
+    l.insertAtIndex(1, 1);
+    std::cout << l.index(1);*/
+
+    // code verification PriorityQueue
+    /*PriorityQueue<int> first_pqueue;
+    std::cout << "------------------------------\n";
+    first_pqueue.Enqueue(6, 6);
+    std::cout << "------------------------------\n";
+    first_pqueue.Enqueue(1, 1);
+    first_pqueue.Enqueue(2, 2);
+    first_pqueue.Enqueue(4, 4);
+    first_pqueue.Enqueue(3, 3);
+    for (int i = 0; i < 8; i++) {
+        std::cout << first_pqueue.Dequeue() << " ";
+    }*/
 }
