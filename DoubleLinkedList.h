@@ -39,7 +39,7 @@ public:
         size++;
     }
 
-    void pushBack(T value){
+    void pushBack(T value) {
         std::shared_ptr<Node> newNode = std::make_shared<Node>(value);
         if (head == nullptr) {
             head = tail = newNode;
@@ -53,9 +53,23 @@ public:
         size++;
     }
 
-    friend std::ostream &operator<<(std::ostream &os, DoubleLinkedList &other){
+    void popFront() {
+        if (head == nullptr) return;
+        if (head == tail) {
+            head = tail = nullptr;
+            return;
+        }
+        head = head->next;
+    }
+
+    [[nodiscard]] bool isListNotEmpty() {
+        if (size > 0) return true;
+        else return false;
+    }
+
+    friend std::ostream &operator<<(std::ostream &os, DoubleLinkedList &other) {
         Node *current = other.head.get();
-        while(current != nullptr){
+        while (current != nullptr) {
             os << current->data << " ";
             current = current->next.get();
         }
