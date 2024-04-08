@@ -12,5 +12,9 @@ int main() {
 
     obj.removeAtIndex(2);
     std::cout << obj;
+
+    if(obj.search(1)){
+        std::cout << "yes";
+    }
     return 0;
 }

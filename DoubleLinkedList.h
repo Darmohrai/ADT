@@ -34,6 +34,8 @@ public:
         else return false;
     }
 
+    [[nodiscard]]size_t showSize() { return size; }
+
     void pushFront(T value) {
         std::shared_ptr<Node> newNode = std::make_shared<Node>(value);
         if (head == nullptr) {
@@ -136,6 +138,17 @@ public:
             current = current->next;
         }
         current->previous.lock()->next = current->next;
+    }
+
+    [[nodiscard]] bool search(T value) {
+        if (size > 0) {
+            std::shared_ptr<Node> current = head;
+            while (current) {
+                if (current->data == value) return true;
+                current = current->next;
+            }
+        }
+        return false;
     }
 
     friend std::ostream &operator<<(std::ostream &os, DoubleLinkedList &other) {
